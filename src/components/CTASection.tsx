@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { analyzeWebsite, downloadAnalysis, type AnalysisResult } from '../services/analysisService';
-import { triggerN8nWorkflow, downloadN8nResponse } from '../services/n8nService';
-import { RedditSignals } from '../services/redditSignalService';
+import { downloadAnalysis, type AnalysisResult } from '../services/analysisService';
 import { ICPDisplay } from './ICPDisplay';
 import { RedditPostCards, type RedditPostResult } from './RedditPostCards';
 import atlanICP from '../../data/atlan_icp.json';
@@ -12,7 +9,6 @@ import atlanRedditPosts from '../../data/reddit_posts.json';
 
 export const CTASection: React.FC = () => {
   const [showAnalysis, setShowAnalysis] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const [analysisResult, setAnalysisResult] = useState<AnalysisResult | null>(null);
   const [showRedditPosts, setShowRedditPosts] = useState(false);
   const [redditPosts, setRedditPosts] = useState<RedditPostResult[] | null>(null);
@@ -92,9 +88,6 @@ export const CTASection: React.FC = () => {
                 </button>
               )}
 
-              {error && (
-                <p className="text-red-400 text-sm">{error}</p>
-              )}
 
               <p className="text-gray-500 text-sm mt-8">
                 Built by Nishit :)
